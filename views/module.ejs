@@ -1,0 +1,16 @@
+<html>
+  <body>
+  <div align="center">
+    <h3><%= pkg %></h3>
+    <canvas id="module-chart" width="600" height="400"></canvas>
+    <h4>Total: <%= total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></h4>
+  </div>
+  <script src="javascripts/charts.js"></script>
+  <script>
+    var chart = new Chart(document.getElementById("module-chart").getContext("2d")).Line(<%- JSON.stringify(data) %>, {
+        scaleBeginAtZero: true,
+        scaleLabel: '<' + '%= value.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\") %' + '>'
+    });
+  </script>
+  </body>
+</html>
